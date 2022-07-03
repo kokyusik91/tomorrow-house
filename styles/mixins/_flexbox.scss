@@ -19,13 +19,13 @@ $flex-map: (
   justify-self: _get-flex-value($jc);
 }
 // inline-flex
-@mixin flexbox($jc: center, $ai: center) {
+@mixin inline-flexbox($jc: center, $ai: center) {
   display: inline-flex;
   align-items: _get-flex-value($ai);
   justify-self: _get-flex-value($jc);
 }
 // flex-direction : column
-@mixin flexbox($jc: center, $ai: center) {
+@mixin column-flexbox($jc: center, $ai: center) {
   display: flex;
   flex-direction: column;
   align-items: _get-flex-value($ai);
