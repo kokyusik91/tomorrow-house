@@ -1,11 +1,13 @@
 // 변수를 선언하는 파일들은 최상단으로 배치
 @import './constants/colors';
 @import './constants/typography';
+@import './constants/breakpoints';
 
 @import './base/fonts';
 @import './base/normalize';
 @import './base/reset';
 
 @import './mixins/text-style';
+@import './mixins/responsive';
 
 @import './layouts/grid';

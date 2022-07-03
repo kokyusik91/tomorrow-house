@@ -1,0 +1,15 @@
+// break point에 대한 media query
+@mixin responsive($screen) {
+  @if ($screen == 'T') {
+    @media screen and (min-width: $md-breakpoint) {
+      // content를 넣어야한다. (props.children 같은 느낌)
+      @content;
+    }
+  }
+
+  @if ($screen == 'D') {
+    @media screen and (min-width: $lg-breakpoint) {
+      @content;
+    }
+  }
+}
