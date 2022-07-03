@@ -11,7 +11,7 @@
 @mixin pos-center-y($type: absolute) {
   @if ($type == fixed or $type == absolute) {
     position: $type;
-    left: 50%;
+    top: 50%;
     transform: translateY(-50%);
   }
 }
