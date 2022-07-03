@@ -16,20 +16,20 @@ $flex-map: (
 @mixin flexbox($jc: center, $ai: center) {
   display: flex;
   align-items: _get-flex-value($ai);
-  justify-self: _get-flex-value($jc);
+  justify-content: _get-flex-value($jc);
 }
 // inline-flex
 @mixin inline-flexbox($jc: center, $ai: center) {
   display: inline-flex;
   align-items: _get-flex-value($ai);
-  justify-self: _get-flex-value($jc);
+  justify-content: _get-flex-value($jc);
 }
 // flex-direction : column
 @mixin column-flexbox($jc: center, $ai: center) {
   display: flex;
   flex-direction: column;
   align-items: _get-flex-value($ai);
-  justify-self: _get-flex-value($jc);
+  justify-content: _get-flex-value($jc);
 }
 
 // function 과 mixin 차이
