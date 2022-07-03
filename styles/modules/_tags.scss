@@ -1,0 +1,28 @@
+// placeholder : 태그를 3개를 만들어야하는데 연관되있는 스타일링을 해놓고 상속받는 식으로
+%tag-base {
+  // 공통 스타일링
+  @include inline-flexbox;
+  @include text-style(12);
+  height: 20px;
+  padding: 0 6px;
+  font-weight: 700;
+  border-radius: 4px;
+}
+
+.tag-red {
+  @extend %tag-base;
+  color: $white;
+  background-color: $red;
+}
+
+.tag-green {
+  @extend %tag-base;
+  color: $white;
+  background-color: $green;
+}
+
+.tag-gray {
+  @extend %tag-base;
+  color: $secondary;
+  background-color: $border;
+}
