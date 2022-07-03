@@ -1,0 +1,37 @@
+// if로 만들빠엔 key value로 넘긴다.
+
+$flex-map: (
+  start: flex-start,
+  end: flex-end,
+  between: space-between,
+  around: space-around,
+  stretch: stretch,
+  center: center,
+);
+// flex 값을 가져오는 함수.
+@function _get-flex-value($key) {
+  @return map-get($flex-map, $key);
+}
+// 기본 flex
+@mixin flexbox($jc: center, $ai: center) {
+  display: flex;
+  align-items: _get-flex-value($ai);
+  justify-self: _get-flex-value($jc);
+}
+// inline-flex
+@mixin flexbox($jc: center, $ai: center) {
+  display: inline-flex;
+  align-items: _get-flex-value($ai);
+  justify-self: _get-flex-value($jc);
+}
+// flex-direction : column
+@mixin flexbox($jc: center, $ai: center) {
+  display: flex;
+  flex-direction: column;
+  align-items: _get-flex-value($ai);
+  justify-self: _get-flex-value($jc);
+}
+
+// function 과 mixin 차이
+// 1. mixiin 은 include를 붙여야한다.
+// 2. function은 값을 mixin은 코드를 반환한다.
