@@ -1,0 +1,25 @@
+%avatar-base {
+  display: block;
+  overflow: hidden;
+  border-radius: 50%;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    // 새로운 css 속성
+    object-fit: cover;
+  }
+}
+
+.avartar-24 {
+  @extend %avatar-base;
+  width: 24px;
+  height: 24px;
+}
+
+.avartar-32 {
+  @extend %avatar-base;
+  width: 32px;
+  height: 32px;
+}
