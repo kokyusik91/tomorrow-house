@@ -1,0 +1,19 @@
+.gnb-nav {
+  &-list {
+    @include flexbox(start);
+  }
+
+  &-item {
+    margin-right: 24px;
+
+    // gnb-nav-item의 마지막 요소
+    &:last-child {
+      margin-right: 0;
+    }
+
+    a {
+      @include text-style(18, $primary);
+      font-weight: 700;
+    }
+  }
+}
