@@ -1,10 +1,24 @@
 .gnb-nav {
+  $padding: 8px;
+
+  /* 방법 1. 간단하게 마이너스 margin으로 좌측으로 땡기기 */
+  .gnb-nav-list {
+    margin-left: -#{$padding};
+  }
+
   &-list {
     @include flexbox(start);
   }
 
   &-item {
-    margin-right: 24px;
+    margin-right: 24px - ($padding * 2);
+
+    &.is-active,
+    &:hover {
+      a {
+        color: $blue;
+      }
+    }
 
     // gnb-nav-item의 마지막 요소
     &:last-child {
@@ -13,6 +27,8 @@
 
     a {
       @include text-style(18, $primary);
+      display: block;
+      padding: $padding;
       font-weight: 700;
     }
   }
