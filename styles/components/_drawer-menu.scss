@@ -3,7 +3,7 @@
   $community-menu-item-length: 10;
   $store-menu-item-length: 9;
   $expert-menu-item-length: 5;
-  $drawer-menu-list-padding: 8px;
+  $drawer-menu-list-padding: 20px;
 
   @function _calculate-max-content-height($length) {
     @return $drawer-menu-item-height * $length + $drawer-menu-list-padding;
