@@ -3,6 +3,7 @@
 @import './constants/typography';
 @import './constants/breakpoints';
 @import './constants/box-shadows';
+@import './constants/z-index';
 
 @import './base/fonts';
 @import './base/normalize';
@@ -31,3 +32,4 @@
 @import './layouts/grid';
 @import './layouts/gnb';
 @import './layouts/sidebar';
+@import './layouts/overlay';
