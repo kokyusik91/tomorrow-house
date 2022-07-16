@@ -1,9 +1,10 @@
 .lnb {
   $lnb-link-padding: 8px;
-  $lnb-height-sm: 40px;
-  $lnb-height-md: 50px;
+
   $grid-margin: $sm-margin + $gutter / 2;
   overflow-x: auto;
+
+  background-color: $white;
 
   @include no-scrollbar;
 
