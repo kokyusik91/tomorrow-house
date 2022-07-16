@@ -24,6 +24,16 @@
   .checkout-select {
     position: relative;
     display: inline-block;
+
+    &:hover {
+      select {
+        border-color: $tertiary;
+      }
+
+      i {
+        color: $secondary;
+      }
+    }
     select {
       @include text-style(14, $primary);
       padding: 0 8px;
@@ -33,8 +43,8 @@
       background-color: $white;
       border: 1px solid $border;
       border-radius: 3px;
-
       appearance: none;
+      transition: border-color 100ms ease-in-out;
     }
 
     i {
@@ -43,6 +53,12 @@
       font-size: 20px;
       color: $secondary;
       pointer-events: none;
+      transition: color 100ms ease-in-out;
+
+      &:hover,
+      &:active {
+        opacity: 0.4;
+      }
     }
   }
 
