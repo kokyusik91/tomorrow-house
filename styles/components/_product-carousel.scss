@@ -45,4 +45,52 @@
     height: auto;
     display: block;
   }
+
+  @include responsive(T) {
+    // col-md-6사이즈를 먹고 있는 캐러셀의 사이즈를 줄이기 위해 padding-right을 줘서 사이즈를 줄여준다.
+    padding-right: 30px;
+    &-slider {
+      margin: 0 0 8px 0;
+      overflow: hidden;
+      border-radius: 4px;
+    }
+
+    &-thumbnail {
+      position: static;
+      transform: none;
+    }
+
+    .thumbnail-list {
+      justify-content: start;
+    }
+
+    .thumbnail-item {
+      margin: 0 8px 0 0;
+
+      &.tns-nav-active {
+        button {
+          border: 2px solid $blue;
+          transform: none;
+        }
+      }
+
+      button {
+        @include flexbox();
+        width: 56px;
+        height: 56px;
+        overflow: hidden;
+        border-radius: 4px;
+        opacity: 1;
+      }
+
+      img {
+        width: 56px;
+        display: block;
+      }
+    }
+
+    .thumbnail-list:last-child {
+      margin-right: 0;
+    }
+  }
 }
