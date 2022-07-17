@@ -1,0 +1,47 @@
+.product-table {
+  $table-cell-padding: 12px;
+  $table-th-width-sm: 100px;
+  $table-th-width-md: 140px;
+
+  width: 100%;
+  // 무조건 테이블에 적용 해야함
+  //border-collapse :  인접해 있는 보더를 합친다! 요즘 느낌
+  border-collapse: collapse;
+  // 어떤 극단적인 일이라도 전체 테이블 크기를 고정 하고 싶다. (안에 컨텐츠 크기가 어떻든)
+  table-layout: fixed;
+
+  tr {
+    @include text-style(12, $primary);
+    text-align: left;
+    border-bottom: 1px solid $border;
+    // 테이블 내에서 사용 지향
+    vertical-align: top;
+  }
+
+  th,
+  td {
+    padding: $table-cell-padding;
+  }
+
+  th {
+    width: $table-th-width-sm + $table-cell-padding;
+    font-weight: 400;
+    color: $secondary;
+  }
+
+  td {
+    padding-left: 0px;
+  }
+
+  @include responsive(T) {
+    tr {
+      @include text-style(14);
+    }
+
+    th {
+      width: $table-th-width-md + $table-cell-padding * 2;
+      font-weight: 400;
+      color: $secondary;
+    }
+  }
+}
