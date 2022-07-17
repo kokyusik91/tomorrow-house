@@ -1,6 +1,6 @@
 .product-section-header {
-  position: relative;
   @include flexbox(start);
+  position: relative;
   width: 100%;
   height: 64px;
   background-color: $white;
@@ -10,38 +10,35 @@
   }
 
   .badge {
-    margin-left: 8px;
     @include text-style(16, $blue);
+    margin-left: 8px;
   }
 
-  .text-button {
-    padding: $grid-margin;
+  .text-button,
+  .icon-button {
     @include pos-center-y;
     right: -#{$grid-margin};
-    @include text-style(14, $blue);
-    background-color: hotpink;
 
     &:active {
       opacity: 0.4;
     }
+  }
+
+  .text-button {
+    @include text-style(14, $blue);
+    padding: $grid-margin;
+    font-weight: 700;
   }
 
   .icon-button {
     @include flexbox;
-    right: -#{$grid-margin};
     width: 22px + ($grid-margin * 2);
     height: 22px + ($grid-margin * 2);
-    @include pos-center-y;
     font-size: 22px;
     color: $secondary;
-    background-color: hotpink;
 
     &.is-right {
       transform: translateY(-50%) rotate(-90deg);
-    }
-
-    &:active {
-      opacity: 0.4;
     }
   }
 
@@ -51,18 +48,15 @@
       @include text-style(18);
     }
 
-    .text-button {
-      @include text-style(16);
-
+    .text-button,
+    .icon-button {
       &:hover {
         opacity: 0.4;
       }
     }
 
-    .icon-button {
-      &:hover {
-        opacity: 0.4;
-      }
+    .text-button {
+      @include text-style(16);
     }
   }
 }
