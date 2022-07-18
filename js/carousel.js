@@ -15,6 +15,7 @@ const userGallery = tns({
   container: '.user-gallery .slider-list',
   // prev next 버튼 삭제
   controls: false,
+  controlsContainer: '.user-gallery-controls',
   navContainer: '.user-gallery .thumbnail-list',
   navAsThumbnails: true,
   // 카드간의 px
