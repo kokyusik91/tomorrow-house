@@ -27,6 +27,7 @@
     @include text-style(13, $dark);
     line-height: 16px;
     font-weight: 400;
+    @include line-clamp(2);
   }
 
   &-price {
