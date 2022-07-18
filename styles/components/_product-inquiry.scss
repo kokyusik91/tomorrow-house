@@ -1,4 +1,10 @@
 .product-inquiry {
+  .inquiry-empty {
+    text-align: center;
+    @include text-style(16, $secondary);
+    padding: 48px 0;
+  }
+
   @include mobile-only {
     padding-bottom: 0;
 
@@ -17,6 +23,12 @@
     .product-section-header .text-button,
     .product-section-content {
       display: none;
+    }
+  }
+
+  @include responsive(T) {
+    .inquiry-empty {
+      padding: 28px 0;
     }
   }
 }
