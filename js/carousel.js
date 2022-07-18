@@ -15,6 +15,8 @@ const userGallery = tns({
   container: '.user-gallery .slider-list',
   // prev next 버튼 삭제
   controls: false,
+  navContainer: '.user-gallery .thumbnail-list',
+  navAsThumbnails: true,
   // 카드간의 px
   gutter: 4,
   // 바깥에 있는 간격 설정
