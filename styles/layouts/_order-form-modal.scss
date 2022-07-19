@@ -3,12 +3,15 @@
   bottom: 0;
   left: 0;
   width: 100%;
+  max-height: 75vh;
   padding-top: 16px;
+  overflow-y: auto;
   display: none;
   border-radius: 12px 12px 0 0;
   z-index: $order-form-modal-level;
   background-color: $white;
   box-shadow: 0px -4px 20px rgba(0, 0, 0, 0.15);
+  overscroll-behavior: contain;
 
   &.is-open {
     display: block;
@@ -20,13 +23,21 @@
     margin-bottom: 16px;
   }
 
+  .order-summary {
+    margin-bottom: 48px + (4px * 2) + 16px;
+  }
+
   .order-inputs {
     margin-bottom: 8px;
   }
 
   .button-group {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: $white;
     padding: 4px;
-    padding-top: 0;
   }
 
   @include responsive(T) {
