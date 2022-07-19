@@ -36,6 +36,9 @@
 
     .avartar-32 {
       margin-right: 8px;
+      &:active {
+        opacity: 0.4;
+      }
     }
 
     .username,
@@ -48,9 +51,25 @@
       flex-grow: 1;
       padding-right: 8px;
       font-weight: 700;
+
+      &:active {
+        color: $blue;
+      }
     }
   }
 
   @include responsive(T) {
+  }
+
+  @include responsive(D) {
+    &-detail {
+      .avartar-32:hover {
+        opacity: 0.4;
+      }
+
+      .username:hover {
+        color: $blue;
+      }
+    }
   }
 }
