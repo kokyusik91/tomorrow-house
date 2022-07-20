@@ -1,6 +1,6 @@
 const sidebarMenuButton = document.querySelector('.gnb-icon-button.is-menu')
 const sidebar = document.querySelector('.sidebar')
-const sidebarOverlay = document.querySelector('overlay')
+const sidebarOverlay = document.querySelector('.overlay')
 
 // 햄버거 메뉴를 눌렀을때 사이드바와 오버레이가 is-active
 function openSidebar() {
@@ -12,10 +12,9 @@ function openSidebar() {
 }
 
 function closeSidebar() {
-  sidebar.classList.remover('is-active')
+  sidebar.classList.remove('is-active')
   sidebarOverlay.classList.remove('is-active')
 }
 
 sidebarMenuButton.addEventListener('click', openSidebar)
-
 sidebarOverlay.addEventListener('click', closeSidebar)
