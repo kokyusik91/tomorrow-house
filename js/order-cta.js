@@ -53,7 +53,9 @@ function toggleOrderCtaBookmark() {
   }
   // 버튼에 is-active를 붙였다 띄었다.
   this.classList.toggle('is-active')
+  // 콤마를 붙여주는 작업
   countSpan.innerHTML = newCount.toLocaleString()
+  // html 속성을 바꾸고 싶은녀석 ("뭘바꿀거냐", "어떤값을 넣어줄거냐")
   countSpan.setAttribute('aria-label', `북마크 ${newCount.toLocaleString()}회`)
 }
 
