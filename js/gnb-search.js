@@ -6,6 +6,8 @@ const deleteAllButton = gnbSearchHistory.querySelector(
 )
 const gnbSearchHistoryList = gnbSearchHistory.querySelector('ol')
 
+const deleteButtonList = gnbSearchHistoryList.querySelectorAll('.delete-button')
+
 function openGnbSearchHistory() {
   // 체크 => gnbSearchHistoryList안에 li가 몇개 있는지
   // li가 0개 => 실행 X
@@ -18,19 +20,40 @@ function openGnbSearchHistory() {
   gnbSearchHistory.classList.add('is-active')
 }
 
-function closeGnbSearchHistory(e) {
+function closeGnbSearchHistory() {
+  gnbSearchHistory.classList.remove('is-active')
+  window.removeEventListener('click', closeGnbSearchHistoryOnClickingOutside)
+}
+
+function closeGnbSearchHistoryOnClickingOutside(e) {
   if (!gnbSearch.contains(e.target)) {
-    gnbSearchHistory.classList.remove('is-active')
-    window.removeEventListener('click', closeGnbSearchHistory)
+    closeGnbSearchHistory()
   }
 }
 
 function deleteAllSearchHistories() {
   // gnbSearchHistoryList 안에 들어 있는 모든 li를 삭제
   gnbSearchHistoryList.innerHTML = ''
-  gnbSearchHistory.classList.remove('is-active')
+  closeGnbSearchHistory()
 }
 
 gnbSearchInput.addEventListener('focus', openGnbSearchHistory)
 
 deleteAllButton.addEventListener('click', deleteAllSearchHistories)
+
+function deleteSearchHistoryItem(e) {
+  // 윈도우에게 이벤트 전파를 막는다.
+  e.stopPropagation()
+  // li 삭제
+  const itemToDelete = this.parentNode
+  // 부모 요소만이 자식 DOM을 지울 수 있다.
+  gnbSearchHistoryList.removeChild(itemToDelete)
+
+  if (gnbSearchHistoryList.children.length === 0) {
+    closeGnbSearchHistory()
+  }
+}
+
+deleteButtonList.forEach((button) => {
+  deleteButtonList.addEventListener('click', deleteSearchHistoryItem)
+})
