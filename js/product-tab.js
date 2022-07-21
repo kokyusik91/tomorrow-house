@@ -42,3 +42,39 @@ productTabButtonList.forEach((button) => {
   button.addEventListener('click', toggleActiveTab)
   button.addEventListener('click', scrollToTabPanel)
 })
+
+// 사전 정보 : 각각의 문서의 시작점에서 tabPanel의 y축 위치 (문서의 시작점에서 부터 얼마나 아래 있는지)
+// 요소의 Y 축위치 : window.scrollY + element.getBoundingClientRect.top();
+
+const productTabPanelIdList = [
+  'product-spec',
+  'product-review',
+  'product-inquiry',
+  'product-shipment',
+  'product-recommendation',
+]
+
+const productTabPanelList = productTabPanelIdList.map((panelId) => {
+  const tabPanel = document.querySelector(`#${panelId}`)
+  return tabPanel
+})
+
+const productTabPanelPositionMap = {}
+
+function detectTabPanelPosition() {
+  // 가각의 tabPanel의 y축 위치를 찾는다
+  // productTabPanelPositionMap에 그 값을 업데이트
+  productTabPanelList.forEach((panel) => {
+    // id
+    // y축 위치
+    const id = panel.getAttribute('id')
+    const position = window.scrollY + panel.getBoundingClientRect().top
+    productTabPanelPositionMap[id] = position
+  })
+}
+
+// load 이벤트 : 요소들을 모두다 렌더 됬을때....
+// 1. 모두 로드되고 tabPanel의 위치를 파악해야함...
+// 2. 화면 사이즈가 바뀌게 되면?! 요소의 Y값이 달라질때.. 새로 업데이트 되어야한다.
+window.addEventListener('load', detectTabPanelPosition)
+window.addEventListener('resize', detectTabPanelPosition)
