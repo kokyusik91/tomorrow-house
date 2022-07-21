@@ -8,6 +8,9 @@ const TOP_HEADER_MOBILE = 50 + 40 + 40
 
 // 현재 active 되있는 정보를 업데이트 해줌
 let currentActiveTab = productTab.querySelector('.is-active')
+// li에 is-active를 뺴줬으므로
+
+let disableUpdating = false
 
 function toggleActiveTab() {
   // 1.  button을 클릭하면 is-active 됨
@@ -15,9 +18,14 @@ function toggleActiveTab() {
   const tabItem = this.parentNode
 
   if (currentActiveTab !== tabItem) {
+    disableUpdating = true
     tabItem.classList.add('is-active')
     currentActiveTab.classList.remove('is-active')
     currentActiveTab = tabItem
+
+    setTimeout(() => {
+      disableUpdating = false
+    }, 1000)
   }
 }
 
@@ -71,6 +79,7 @@ function detectTabPanelPosition() {
     const position = window.scrollY + panel.getBoundingClientRect().top
     productTabPanelPositionMap[id] = position
   })
+  updateActiveTabOnScroll()
 }
 
 // load 이벤트 : 요소들을 모두다 렌더 됬을때....
@@ -81,6 +90,9 @@ window.addEventListener('resize', detectTabPanelPosition)
 window.addEventListener('scroll', updateActiveTabOnScroll)
 
 function updateActiveTabOnScroll() {
+  if (disableUpdating) {
+    return
+  }
   // 스크롤 위치에 따라서 activeTab 업데이트
   // 1. 현재 유저가 얼마만큼 스크롤을 했느냐 -> window.scrollY
   // 2. 각 tabPanel y축 위치 -> productTabPanelPositionMap
@@ -103,12 +115,24 @@ function updateActiveTabOnScroll() {
     newActiveTab = productTabButtonList[0] // 상품정보
   }
 
+  // 추가 : 끝까지 스크롤 한 경우 newActiveTab = productTabBUttonList[4]
+  // window.scrollY + window.innerHeight == body의 전체 height
+  // window.innerWidth < 1200 - orderCta, 56px
+  const bodyHeight =
+    document.body.offsetHeight + (window.innerWidth < 1200 ? 56 : 0)
+  if (window.scrollY + window.innerHeight === bodyHeight) {
+    newActiveTab = productTabButtonList[4]
+  }
+
   if (newActiveTab) {
     newActiveTab = newActiveTab.parentNode
 
     if (newActiveTab !== currentActiveTab) {
       newActiveTab.classList.add('is-active')
-      currentActiveTab.classList.remove('is-active')
+      // currentActiveTab이 null 이 아닐떄..
+      if (currentActiveTab !== null) {
+        currentActiveTab.classList.remove('is-active')
+      }
       currentActiveTab = newActiveTab
     }
   }
